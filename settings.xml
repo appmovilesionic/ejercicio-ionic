@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 http://maven.apache.org/xsd/settings-1.2.0.xsd">
+
+  <!--
+    Mirror global: redirige TODO el tráfico de Maven hacia Nexus.
+    Maven no irá a internet ni a Maven Central directamente.
+  -->
+  <mirrors>
+    <mirror>
+      <id>nexus-mirror</id>
+      <name>Nexus Local Mirror</name>
+      <mirrorOf>*</mirrorOf>
+      <url>http://devopslaboratorio.com/nexus/repository/maven-public/</url>
+    </mirror>
+  </mirrors>
+
+  <!-- Credenciales si Nexus requiere autenticación -->
+ 
+  <servers>
+    <!-- Credenciales para descargar dependencias (mirror) -->
+    <server>
+      <id>nexus-mirror</id>
+      <username>admin</username>
+      <password>ath1234</password>
+    </server>
+    <!-- Credenciales para subir el artefacto (deploy) -->
+    <server>
+      <id>nexus-deploy</id>
+      <username>admin</username>
+      <password>ath1234</password>
+    </server>
+  </servers>
+ 
+
+</settings>
