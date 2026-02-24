@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- ===== HERENCIA DEL POM RAÍZ ===== -->
+  <parent>
+    <groupId>com.devops</groupId>
+    <artifactId>hola-mundo-parent</artifactId>
+    <version>1.0.0</version>
+    <!-- Ruta relativa al pom.xml padre (un nivel arriba) -->
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
+  <artifactId>hola-mundo-core</artifactId>
+  <packaging>jar</packaging>
+  <name>Hola Mundo :: Core</name>
+  <description>
+    Módulo de dominio: entidades, interfaces de repositorio y excepciones de negocio.
+    No depende de ningún otro módulo interno; es la base de toda la aplicación.
+  </description>
+
+  <dependencies>
+
+    <!-- Genera getters/setters/constructores en tiempo de compilación -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <!-- versión gestionada por el parent (dependencyManagement) -->
+    </dependency>
+
+    <!-- API de validación Jakarta Bean Validation (JSR-380) -->
+    <dependency>
+      <groupId>jakarta.validation</groupId>
+      <artifactId>jakarta.validation-api</artifactId>
+    </dependency>
+
+    <!-- Logging API — solo interfaz, sin implementación en este módulo -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+    </dependency>
+
+    <!-- Testing -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+    </dependency>
+
+  </dependencies>
+
+</project>

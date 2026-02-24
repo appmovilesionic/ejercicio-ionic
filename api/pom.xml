@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- ===== HERENCIA DEL POM RAÍZ ===== -->
+  <parent>
+    <groupId>com.devops</groupId>
+    <artifactId>hola-mundo-parent</artifactId>
+    <version>1.0.0</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
+  <artifactId>hola-mundo-api</artifactId>
+  <packaging>jar</packaging>
+  <name>Hola Mundo :: API</name>
+  <description>
+    Capa de presentación REST: controllers, DTOs y serialización JSON.
+    Depende de hola-mundo-service para delegar la lógica de negocio.
+  </description>
+
+  <dependencies>
+
+    <!-- Módulo interno: lógica de negocio -->
+    <dependency>
+      <groupId>com.devops</groupId>
+      <artifactId>hola-mundo-service</artifactId>
+    </dependency>
+
+    <!-- Serialización / deserialización JSON -->
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+    </dependency>
+
+    <!-- Jakarta Servlet API (provisto por el contenedor; no se empaqueta) -->
+    <dependency>
+      <groupId>jakarta.servlet</groupId>
+      <artifactId>jakarta.servlet-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- Validación de DTOs entrantes -->
+    <dependency>
+      <groupId>jakarta.validation</groupId>
+      <artifactId>jakarta.validation-api</artifactId>
+    </dependency>
+
+    <!-- Generación de código -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+    </dependency>
+
+    <!-- Logging -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+    </dependency>
+
+    <!-- Testing -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+    </dependency>
+
+  </dependencies>
+
+</project>

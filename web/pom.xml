@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- ===== HERENCIA DEL POM RAÍZ ===== -->
+  <parent>
+    <groupId>com.devops</groupId>
+    <artifactId>hola-mundo-parent</artifactId>
+    <version>1.0.0</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
+  <artifactId>hola-mundo-web</artifactId>
+  <!--
+    Único módulo con packaging WAR: genera el artefacto desplegable en Tomcat/WildFly.
+    Todos los demás módulos internos se empaquetan como JAR y quedan incluidos en el WAR.
+  -->
+  <packaging>war</packaging>
+  <name>Hola Mundo :: Web</name>
+  <description>
+    Módulo de empaquetado final. Ensambla todos los módulos internos en un único WAR
+    listo para desplegar en el servidor de aplicaciones.
+  </description>
+
+  <dependencies>
+
+    <!-- Módulo interno: capa REST (que transitivamente trae service, repository y core) -->
+    <dependency>
+      <groupId>com.devops</groupId>
+      <artifactId>hola-mundo-api</artifactId>
+    </dependency>
+
+    <!-- Jakarta Servlet API — provisto por el contenedor en runtime -->
+    <dependency>
+      <groupId>jakarta.servlet</groupId>
+      <artifactId>jakarta.servlet-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- Utilidades generales para la capa de presentación -->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-collections4</artifactId>
+    </dependency>
+
+    <!-- Logging -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+    </dependency>
+
+    <!-- Testing -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+      <!-- Empaquetado WAR: no requiere web.xml gracias a Servlet 3.0+ annotations -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <!-- versión gestionada por el parent (pluginManagement) -->
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

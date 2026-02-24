@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- ===== HERENCIA DEL POM RAÍZ ===== -->
+  <parent>
+    <groupId>com.devops</groupId>
+    <artifactId>hola-mundo-parent</artifactId>
+    <version>1.0.0</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
+  <artifactId>hola-mundo-repository</artifactId>
+  <packaging>jar</packaging>
+  <name>Hola Mundo :: Repository</name>
+  <description>
+    Capa de acceso a datos: implementaciones de repositorio con Hibernate/JPA.
+    Depende de hola-mundo-core para obtener las entidades del dominio.
+  </description>
+
+  <dependencies>
+
+    <!-- Módulo interno: dominio compartido -->
+    <dependency>
+      <groupId>com.devops</groupId>
+      <artifactId>hola-mundo-core</artifactId>
+    </dependency>
+
+    <!-- Implementación ORM de Jakarta Persistence -->
+    <dependency>
+      <groupId>org.hibernate.orm</groupId>
+      <artifactId>hibernate-core</artifactId>
+    </dependency>
+
+    <!-- Pool de conexiones ligero -->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+    </dependency>
+
+    <!-- Logging — implementación para este módulo -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+    </dependency>
+
+    <!-- BD en memoria para tests de integración del repositorio -->
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+    </dependency>
+
+    <!-- Testing -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+    </dependency>
+
+  </dependencies>
+
+</project>
